@@ -63,9 +63,9 @@ def estimate_bpm(ir_history, timestamps):
     else:
         return None
 
-# 🔧 這是你要自己實作的資料庫上傳函式：
+
 def upload_to_cloud(bpm):
-    # TODO: 這裡根據你的資料庫格式實作，比如 HTTP POST、Firebase、Supabase、MySQL 等
+    
     print(f"[DEBUG] 模擬上傳 BPM={bpm} 到雲端")
 
 def main():
@@ -107,13 +107,13 @@ def main():
             if bpm:
                 print(f"BPM: {bpm}")
                 if bpm < 50 or bpm > 120:
-                    print("⚠️ 心跳異常！觸發蜂鳴器")
+                    print(" 心跳異常！觸發蜂鳴器")
                     requests.post("http://192.168.51.152/beep")
                     set_buzzer(True)
                 else:
                     set_buzzer(False)
 
-                # ✅ 正確縮排：只在有 BPM 結果時上傳
+                
                 if time.time() - last_upload_time >= UPLOAD_INTERVAL:
                     upload_to_cloud(bpm)
                     last_upload_time = time.time()
