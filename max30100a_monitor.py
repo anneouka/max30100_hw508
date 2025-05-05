@@ -63,9 +63,9 @@ def estimate_bpm(ir_history, timestamps):
     else:
         return None
 
-# 🔧 這是你要自己實作的資料庫上傳函式：
+
 def upload_to_cloud(bpm):
-    # TODO: 這裡根據你的資料庫格式實作，比如 HTTP POST、Firebase、Supabase、MySQL 等
+    
     print(f"[DEBUG] 模擬上傳 BPM={bpm} 到雲端")
 
 
@@ -116,7 +116,7 @@ def main():
                         abnormal_mode = True
                         abnormal_start = now
                         abnormal_bpm_list = [bpm]
-                        print("⚠️ 進入異常觀察模式...")
+                        print(" 進入異常觀察模式...")
                         time.sleep(1)
                         continue
                 else:
@@ -125,14 +125,14 @@ def main():
                         # 觀察時間到
                         low_or_high = [b for b in abnormal_bpm_list if b < 50 or b > 120]
                         if len(low_or_high) >= 3:
-                            print("🚨 心跳異常確認！")
+                            print(" 心跳異常確認！")
                             print(f"最小 BPM: {min(abnormal_bpm_list)}")
                             print(f"最大 BPM: {max(abnormal_bpm_list)}")
                             print(f"平均 BPM: {sum(abnormal_bpm_list)//len(abnormal_bpm_list)}")
                             requests.post("http://192.168.51.152/beep")
                             set_buzzer(True)
                         else:
-                            print("✅ 觀察結束：未達異常標準")
+                            print(" 觀察結束：未達異常標準")
                             set_buzzer(False)
                         abnormal_mode = False
                         time.sleep(10)  # 暫停 10 秒避免重複警報
