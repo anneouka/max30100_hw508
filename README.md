@@ -23,5 +23,5 @@
 在 `max30100_main.ino` 中修改以下欄位，設定你家中的 Wi-Fi：
 
 ```cpp
-const char* ssid = "iSpan-R201";
-const char* password = "66316588";
+const char* ssid = "家中的 Wi-Fi";
+const char* password = "家中的 Wi-Fi";
